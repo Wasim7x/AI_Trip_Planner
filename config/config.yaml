@@ -1,0 +1,8 @@
+llm:
+  openai:
+    provider: "openai"
+    model_name: ""
+
+  groq:
+    provider: ""
+    model_name: ""  
