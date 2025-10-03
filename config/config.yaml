@@ -1,8 +1,7 @@
 llm:
   openai:
     provider: "openai"
-    model_name: ""
-
+    model_name: "o4-mini"
   groq:
-    provider: ""
-    model_name: ""  
+    provider: "groq"
+    model_name: "deepseek-r1-distill-llama-70b"

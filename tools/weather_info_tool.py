@@ -3,11 +3,16 @@ from utils.weather_info import WeatherForecastTool
 from langchain.tools import tool
 from typing import List
 from dotenv import load_dotenv
+from logger import logging
 
 class WeatherInfoTool:
     def __init__(self):
         load_dotenv()
         self.api_key = os.environ.get("OPENWEATHERMAP_API_KEY")
+        if not self.api_key:
+            raise ValueError("OPENWEATHERMAP_API_KEY not found in environment variables.")
+        logging.info("Weather API key loaded successfully.")
+        
         self.weather_service = WeatherForecastTool(self.api_key)
         self.weather_tool_list = self._setup_tools()
     
@@ -37,5 +42,6 @@ class WeatherInfoTool:
                     forecast_summary.append(f"{date}: {temp} degree celcius , {desc}")
                 return f"Weather forecast for {city}:\n" + "\n".join(forecast_summary)
             return f"Could not fetch forecast for {city}"
-    
+            
+        logging.info("Weather tools set up successfully.")
         return [get_current_weather, get_weather_forecast]

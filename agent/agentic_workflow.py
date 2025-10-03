@@ -7,18 +7,25 @@ from tools.weather_info_tool import WeatherInfoTool
 from tools.place_search_tool import PlaceSearchTool
 from tools.expense_calculator_tool import CalculatorTool
 from tools.currency_conversion_tool import CurrencyConverterTool
+from logger import logging
+from exception import MyException
 
 class GraphBuilder():
     def __init__(self,model_provider: str = "groq"):
         self.model_loader = ModelLoader(model_provider=model_provider)
         self.llm = self.model_loader.load_llm()
+        logging.info(f"Loaded model from provider: {model_provider}")
         
         self.tools = []
-        
+        logging.info("loading weather tool...")
         self.weather_tools = WeatherInfoTool()
+        logging.info("loading place search tool...")
         self.place_search_tools = PlaceSearchTool()
+        logging.info("loading calculator tool...")
         self.calculator_tools = CalculatorTool()
+        logging.info("loading currency converter tool...")
         self.currency_converter_tools = CurrencyConverterTool()
+        logging.info("All tools loaded successfully.")
         
         self.tools.extend([* self.weather_tools.weather_tool_list, 
                            * self.place_search_tools.place_search_tool_list,

@@ -1,21 +1,27 @@
-import os
-from utils.currency_converter import CurrencyConverter
+from utils.expense_calculator import Calculator
 from typing import List
 from langchain.tools import tool
-from dotenv import load_dotenv
 
-class CurrencyConverterTool:
+class CalculatorTool:
     def __init__(self):
-        load_dotenv()
-        self.api_key = os.environ.get("EXCHANGE_RATE_API_KEY")
-        self.currency_service = CurrencyConverter(self.api_key)
-        self.currency_converter_tool_list = self._setup_tools()
+        self.calculator = Calculator()
+        self.calculator_tool_list = self._setup_tools()
 
     def _setup_tools(self) -> List:
-        """Setup all tools for the currency converter tool"""
+        """Setup all tools for the calculator tool"""
         @tool
-        def convert_currency(amount:float, from_currency:str, to_currency:str):
-            """Convert amount from one currency to another"""
-            return self.currency_service.convert(amount, from_currency, to_currency)
+        def estimate_total_hotel_cost(price_per_night:str, total_days:float) -> float:
+            """Calculate total hotel cost"""
+            return self.calculator.multiply(price_per_night, total_days)
         
-        return [convert_currency]
+        @tool
+        def calculate_total_expense(*costs: float) -> float:
+            """Calculate total expense of the trip"""
+            return self.calculator.calculate_total(*costs)
+        
+        @tool
+        def calculate_daily_expense_budget(total_cost: float, days: int) -> float:
+            """Calculate daily expense"""
+            return self.calculator.calculate_daily_budget(total_cost, days)
+        
+        return [estimate_total_hotel_cost, calculate_total_expense, calculate_daily_expense_budget]

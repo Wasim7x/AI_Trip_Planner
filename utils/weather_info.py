@@ -1,4 +1,6 @@
 import requests
+from exception import MyException
+from logger import logging
 
 class WeatherForecastTool:
     def __init__(self, api_key:str):
@@ -7,6 +9,7 @@ class WeatherForecastTool:
 
     def get_current_weather(self, place:str):
         """Get current weather of a place"""
+        logging.info(f"Fetching current weather for {place}")
         try:
             url = f"{self.base_url}/weather"
             params = {
@@ -16,10 +19,11 @@ class WeatherForecastTool:
             response = requests.get(url, params=params)
             return response.json() if response.status_code == 200 else {}
         except Exception as e:
-            raise e
+            raise MyException(e)  
     
     def get_forecast_weather(self, place:str):
         """Get weather forecast of a place"""
+        logging.info(f"Fetching weather forecast for {place}")
         try:
             url = f"{self.base_url}/forecast"
             params = {
@@ -31,4 +35,4 @@ class WeatherForecastTool:
             response = requests.get(url, params=params)
             return response.json() if response.status_code == 200 else {}
         except Exception as e:
-            raise e
+            raise MyException(e)
