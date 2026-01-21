@@ -48,4 +48,4 @@ async def query_travel_agent(query:QueryRequest):
         
         return {"answer": final_output}
     except Exception as e:
-        return JSONResponse(status_code=500, content={"error": str(e)})
+       raise Exception(f"The response failed due to {e}")
