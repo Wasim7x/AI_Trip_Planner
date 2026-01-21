@@ -52,7 +52,7 @@ AI_Trip_Planner/
 
 The following diagram shows how the **AI agent interacts with tools** to plan your trip:  
 
-![Workflow Diagram](f0dcd0d3-b54b-4b01-a24b-4989ea126bb2.png)  
+![Workflow Diagram](my_graph.png)  
 
 ---
 
@@ -86,7 +86,7 @@ source venv/bin/activate
 conda create -n tripplanner python=3.9 -y
 
 # Activate environment
-conda activate tripplanner
+conda activate ./tripplanner
 ```
 
 ### 3️⃣ Install dependencies  
