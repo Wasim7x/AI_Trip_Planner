@@ -12,3 +12,6 @@ wheels/
 venv/
 uv.lock
 logs/
+output/
+cedential.txt
+model_loader.py

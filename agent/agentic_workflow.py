@@ -11,11 +11,10 @@ from logger import logging
 from exception import MyException
 
 class GraphBuilder():
-    def __init__(self,model_provider: str = "groq"):
-        self.model_loader = ModelLoader(model_provider=model_provider)
+    def __init__(self, config: dict):
+        self.model_loader = ModelLoader(config=config)
         self.llm = self.model_loader.load_llm()
-        logging.info(f"Loaded model from provider: {model_provider}")
-        
+        logging.info(f"Loaded model from provider: {config.get('provider')}")
         self.tools = []
         logging.info("loading weather tool...")
         self.weather_tools = WeatherInfoTool()
