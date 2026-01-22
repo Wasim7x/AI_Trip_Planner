@@ -1,0 +1,13 @@
+venv
+__pycache__
+*.pyc
+.env
+.git
+.gitignore
+node_modules
+output/
+logs/
+ai_trip_planner.egg-info
+my_graph.png
+uv.lock
+cedential.txt
