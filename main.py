@@ -27,6 +27,9 @@ class DownloadRequest(BaseModel):
     answer: str
 
 class LLMConfig(BaseModel):
+    weather_api_key: str
+    gplaces_api_key: str
+    exchange_rate_api_key: str
     provider: str
     api_key: str
     model: str    

@@ -16,6 +16,8 @@ class GraphBuilder():
         self.llm = self.model_loader.load_llm()
         logging.info(f"Loaded model from provider: {config.get('provider')}")
         self.tools = []
+        print(config)
+        print("==============================")
         logging.info("loading weather tool...")
         weather_api_key = config.get("weather_api_key", "")
         self.weather_tools = WeatherInfoTool(weather_api_key)
