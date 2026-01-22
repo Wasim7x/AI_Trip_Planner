@@ -1,8 +1,6 @@
 import streamlit as st
 import requests
 import datetime
-
-# from exception.exceptions import TradingBotException
 import sys
 
 BASE_URL = "http://localhost:8000"  # Backend endpoint
@@ -83,7 +81,7 @@ if download_button and "answer" in st.session_state:
 st.sidebar.title("map and weather config")  
 weather_api_key = st.sidebar.text_input(f"weather_API Key", value="", key=f"weather_api_key", type="password")
 gplaces_api_key = st.sidebar.text_input(f"Gplaces_API Key", value="", key=f"Gplaces_api_key", type="password")
-four_quare_api_key = st.sidebar.text_input(f"four_squre_API Key", value="", key=f"four_square_api_key", type="password")
+exchange_rate_api_key = st.sidebar.text_input(f"exchange_rate_api_key", value="", key=f"exchange_rate_api_key", type="password")
 
 
 st.sidebar.title("⚙️LLM Config")
@@ -109,7 +107,7 @@ if provider and api_key:
                 json={
                     "weather_api_key": weather_api_key,
                     "gplaces_api_key": gplaces_api_key,
-                    "four_quare_api_key": four_quare_api_key,
+                    "exchange_rate_api_key": exchange_rate_api_key,
                     "provider": provider,
                     "api_key": api_key,
                     "model": model

@@ -25,7 +25,7 @@ class GraphBuilder():
         logging.info("loading calculator tool...")
         self.calculator_tools = CalculatorTool()
         logging.info("loading currency converter tool...")
-        EXCHANGE_RATE_API_KEY = config.get("four_quare_api_key", "")
+        EXCHANGE_RATE_API_KEY = config.get("exchange_rate_api_key", "")
         self.currency_converter_tools = CurrencyConverterTool(EXCHANGE_RATE_API_KEY)
         logging.info("All tools loaded successfully.")
         

@@ -1,8 +1,8 @@
+import os
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from agent.agentic_workflow import GraphBuilder
 from utils.save_to_document import save_document
-import os
 from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from pydantic import BaseModel
