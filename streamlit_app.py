@@ -80,7 +80,11 @@ if download_button and "answer" in st.session_state:
             file_name="travel_plan.pdf",
             mime="application/pdf"
         )
-    
+st.sidebar.title("map and weather config")  
+weather_api_key = st.sidebar.text_input(f"weather_API Key", value="", key=f"weather_api_key", type="password")
+gplaces_api_key = st.sidebar.text_input(f"Gplaces_API Key", value="", key=f"Gplaces_api_key", type="password")
+four_quare_api_key = st.sidebar.text_input(f"four_squre_API Key", value="", key=f"four_square_api_key", type="password")
+
 
 st.sidebar.title("⚙️LLM Config")
 provider = st.sidebar.radio(
@@ -103,6 +107,9 @@ if provider and api_key:
             response = requests.post(
                 "http://127.0.0.1:8000/set_llm_config",  # FastAPI URL
                 json={
+                    "weather_api_key": weather_api_key,
+                    "gplaces_api_key": gplaces_api_key,
+                    "four_quare_api_key": four_quare_api_key,
                     "provider": provider,
                     "api_key": api_key,
                     "model": model

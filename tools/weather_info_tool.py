@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 from logger import logging
 
 class WeatherInfoTool:
-    def __init__(self):
-        load_dotenv()
-        self.api_key = os.environ.get("OPENWEATHERMAP_API_KEY")
+    def __init__(self, api_key: str):
+        # load_dotenv()
+        self.api_key = api_key or os.getenv("OPENWEATHERMAP_API_KEY")
         if not self.api_key:
             raise ValueError("OPENWEATHERMAP_API_KEY not found in environment variables.")
         logging.info("Weather API key loaded successfully.")

@@ -17,13 +17,16 @@ class GraphBuilder():
         logging.info(f"Loaded model from provider: {config.get('provider')}")
         self.tools = []
         logging.info("loading weather tool...")
-        self.weather_tools = WeatherInfoTool()
+        weather_api_key = config.get("weather_api_key", "")
+        self.weather_tools = WeatherInfoTool(weather_api_key)
         logging.info("loading place search tool...")
-        self.place_search_tools = PlaceSearchTool()
+        GPLACES_API_KEY = config.get("gplaces_api_key", "")
+        self.place_search_tools = PlaceSearchTool(GPLACES_API_KEY)
         logging.info("loading calculator tool...")
         self.calculator_tools = CalculatorTool()
         logging.info("loading currency converter tool...")
-        self.currency_converter_tools = CurrencyConverterTool()
+        EXCHANGE_RATE_API_KEY = config.get("four_quare_api_key", "")
+        self.currency_converter_tools = CurrencyConverterTool(EXCHANGE_RATE_API_KEY)
         logging.info("All tools loaded successfully.")
         
         self.tools.extend([* self.weather_tools.weather_tool_list, 
