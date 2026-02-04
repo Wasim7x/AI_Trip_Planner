@@ -101,7 +101,7 @@ Create a `.env` file in the root directory and add your API keys:
 # Weather & Maps APIs
 OPENWEATHERMAP_API_KEY=your_api_key_here
 GPLACES_API_KEY=your_api_key_here
-FOURSQUARE_API_KEY=your_api_key_here
+CURRANCY_EXCHANGW_API_KEY=your_api_key_here
 
 # LLM APIs (choose one)
 OPENAI_API_KEY=your_openai_key_here
@@ -136,8 +136,6 @@ python main.py
 - <a href="https://drive.google.com/file/d/10nkIjS_ncwOO35z2IaBc8TYef01_yKVS/view?usp=sharing">
 View Output File
 </a>
-
-
 ## 🤝 Contributing  
 Contributions are welcome! 🎉  
 
