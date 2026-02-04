@@ -133,9 +133,8 @@ python main.py
 
 ---
 ## Output
-- <a href="https://drive.google.com/file/d/10nkIjS_ncwOO35z2IaBc8TYef01_yKVS/view?usp=sharing">
-View Output File
-</a>
+<a href="https://drive.google.com/file/d/10nkIjS_ncwOO35z2IaBc8TYef01_yKVS/view?usp=sharing">View Output File</a>
+
 ## 🤝 Contributing  
 Contributions are welcome! 🎉  
 
